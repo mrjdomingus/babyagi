@@ -18,3 +18,9 @@ llama/
 chroma/
 node_modules/
 .DS_Store
+
+# To stop the task processing loop
+STOP.TXT
+
+# log files
+*.log

@@ -9,6 +9,7 @@ import openai
 import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 from dotenv import load_dotenv
+from mdo_utils.log import print
 
 # Load default environment variables (.env)
 load_dotenv()
@@ -416,6 +417,10 @@ if not JOIN_EXISTING_OBJECTIVE:
 
 def main ():
     while True:
+        # Check for existence of file "STOP.txt" in the current directory
+        if os.path.exists("STOP.TXT"):
+            print("Stopping due to STOP.TXT file.")
+            break
         # As long as there are tasks in the storage...
         if not tasks_storage.is_empty():
             # Print the task list
